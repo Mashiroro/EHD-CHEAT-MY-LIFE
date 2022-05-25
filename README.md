@@ -308,3 +308,21 @@ sudo hping3 –c 2 –-icmp IP
 ```
 hping3 –c 2 –a {FAKE IP} –-icmp {TARGET IPs}
 ```
+
+# SNMP walk
+```
+SNMP walk with OID
+snmpwalk -l authPriv -a SHA -A {PASSWORD} -x AES -X {SNMP KEY} -u {username} {IP} {OID}
+
+snmpwalk -l authPriv -a SHA -A {PASSWORD} -x AES -X {SNMP KEY} -u {username} {IP} 1.3.6.1.2.1.1.6
+
+# grep a known value (case-sensitive)
+snmpwalk -l authPriv -a SHA -A {PASSWORD} -x AES -X {SNMP KEY} -u {username} {IP} | grep -i "{STRING}"
+
+# from quiz
+snmpwalk -l authPriv -a SHA -A {PASSWORD} -x AES -X {SNMP KEY} -u {USERNAME} {IP} 
+
+# SNMP walk on version 3
+snmpget -v3  -l authPriv -u {USERNAME} -a SHA -A {PASSWORD}  -x AES -X {SNMP KEY} {IP} {OID}
+```
+https://www.linickx.com/snmpwalk-v3-and-snmpget-v3-examples
